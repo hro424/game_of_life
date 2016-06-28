@@ -124,7 +124,7 @@ check_cell(const cell_t *cp, const cell_t *origin, size_t xsize)
 {
 	for (size_t n = 0; n < 8; n++) {
 		size_t d = cp->neighbor[n] - origin;
-		printf("[%u] %u,%u ", n, d % xsize, d / xsize);
+		printf("[%zu] %zu,%zu ", n, d % xsize, d / xsize);
 	}
 }
 
@@ -133,7 +133,7 @@ check_field(const cell_t *field, size_t xsize, size_t ysize)
 {
 	for (size_t y = 0; y < ysize; y++) {
 		for (size_t x = 0; x < xsize; x++) {
-			printf("%u %u\n", x, y);
+			printf("%zu %zu\n", x, y);
 			check_cell(&field[y * xsize + x], field, xsize);
 			printf("\n");
 		}
@@ -231,7 +231,7 @@ main(int argc, char *argv[])
 		time2.tv_usec = 1000000L - time1.tv_usec + time2.tv_usec;
 	}
 
-	printf("time: %ld sec %ld usec\n", time2.tv_sec, time2.tv_usec);
+	printf("time: %ld sec %d usec\n", time2.tv_sec, time2.tv_usec);
 	return EXIT_SUCCESS;
 }
 
